@@ -127,10 +127,10 @@ function createRock(x) {
 function endGame() {
   clearInterval(gameInterval);
   // GAME.removeChild(GAME.querySelector('.rock'));
-  // for (var i = 0; i < ROCKS.length; i++) {
-    // ROCKS[i].remove();
+  for (var i = 0; i < ROCKS.length; i++) {
+    ROCKS[i].remove();
     // ROCKS.pop();
-  // }
+  }
   // alert("End Game");
   console.log("End Game");
   return;
@@ -155,7 +155,6 @@ function moveDodger(e) {
     e.stopPropagation();
     moveDodgerRight();
   }
-  // window.requestAnimationFrame(moveDodger);
 }
 
 function moveDodgerLeft() {
@@ -164,10 +163,13 @@ function moveDodgerLeft() {
    * This function should move DODGER to the left
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
-  var left = positionToInteger(DODGER.style.left);
-  if (left > 0) {
-    DODGER.style.left = `${left - 14}px`;
-  }
+  window.requestAnimationFrame(function() {
+    var left = positionToInteger(DODGER.style.left);
+    if (left > 0) {
+      DODGER.style.left = `${left - 4}px`;
+      // window.requestAnimationFrame(moveDodgerLeft);
+    }
+  });
   // window.requestAnimationFrame(moveDodgerLeft);
 }
 
@@ -177,11 +179,13 @@ function moveDodgerRight() {
    * This function should move DODGER to the right
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
-  var left = positionToInteger(DODGER.style.left);
-  if (left < GAME_WIDTH - 40) {
-    DODGER.style.left = `${left + 14}px`;
-    // window.requestAnimationFrame(moveDodgerRight);
-  }
+  window.requestAnimationFrame(function() {
+    var left = positionToInteger(DODGER.style.left);
+    if (left < GAME_WIDTH - 40) {
+      DODGER.style.left = `${left + 4}px`;
+      // window.requestAnimationFrame(moveDodgerRight);
+    }
+  });
   // window.requestAnimationFrame(moveDodgerRight);
 }
 
