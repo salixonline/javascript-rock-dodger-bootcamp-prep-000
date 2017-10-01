@@ -131,7 +131,7 @@ function endGame() {
     ROCKS[i].remove();
     // ROCKS.pop();
   }
-  windows.removeEventListener('keydown', moveDodger);
+  window.removeEventListener('keydown', moveDodger);
   alert("End Game");
   console.log("End Game");
   return;
